@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { Category } from '../model/Category';
 
 const categoriesRoutes = Router();
