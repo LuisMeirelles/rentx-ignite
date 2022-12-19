@@ -2,7 +2,17 @@ import { Category } from '../model/Category';
 import { ICategoriesRepository, ICreateCategoryDTO } from './ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
-  constructor(private categories: Category[] = []) {}
+  private static INSTANCE: CategoriesRepository;
+
+  private constructor(private categories: Category[] = []) {}
+
+  public static getInstance(): CategoriesRepository {
+    if (!CategoriesRepository.INSTANCE) {
+      CategoriesRepository.INSTANCE = new CategoriesRepository();
+    }
+
+    return CategoriesRepository.INSTANCE;
+  }
 
   create({ name, description }: ICreateCategoryDTO) {
     const createdAt = new Date();
