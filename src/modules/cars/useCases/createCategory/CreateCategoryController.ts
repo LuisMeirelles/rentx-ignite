@@ -14,7 +14,7 @@ class CreateCategoryController {
       return response.status(400).json({ error: message });
     }
 
-    return response.sendStatus(201);
+    return response.status(201).send();
   }
 }
 

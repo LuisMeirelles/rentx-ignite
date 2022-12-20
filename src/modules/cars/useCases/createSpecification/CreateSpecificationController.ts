@@ -9,7 +9,7 @@ class CreateSpecificationController {
 
     this.createSpecificationUseCase.execute({ name, description });
 
-    return response.sendStatus(201);
+    return response.status(201).send();
   }
 }
 
