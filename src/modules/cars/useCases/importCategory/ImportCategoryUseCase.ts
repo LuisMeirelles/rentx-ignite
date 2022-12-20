@@ -30,7 +30,10 @@ class ImportCategoryUseCase {
             description
           });
         })
-        .on('end', () => resolve(categories))
+        .on('end', () => {
+          fs.promises.unlink(file.path);
+          resolve(categories);
+        })
         .on('error', (error) => reject(error));
     });
   }
@@ -39,7 +42,7 @@ class ImportCategoryUseCase {
     const categories = await this.loadCategories(file);
 
     categories.map((category) => {
-      const { name, description } = category;
+      const { name } = category;
 
       const categoryExists = this.categoriesRepository.findByName(name);
 
