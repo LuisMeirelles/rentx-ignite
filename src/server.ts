@@ -12,4 +12,4 @@ app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 app.use(router);
 
-app.listen(3333, () => console.log('Server is running'));
+app.listen(3333, () => console.log(`Server running on port ${process.env.PORT}`));
